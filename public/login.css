@@ -1,0 +1,85 @@
+/* body {
+    background-color: #f8f9fa;
+  } */
+
+  .login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .login-header {
+    background: url('https://www.fragranceoutlet.com/cdn/shop/articles/perfume-bottle-with-aromatic-floral-scent-luxury-fragrance.jpg?format=pjpg&v=1704384173&width=1000') no-repeat center;
+    background-size: cover;
+    height: 120px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: bold;
+    font-size: 24px;
+  }
+
+  .login-form {
+    padding: 30px;
+  }
+
+  .form-control {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .form-control:focus {
+    border-color: #28a745;
+    box-shadow: none;
+  }
+
+  .form-check-label {
+    color: #28a745;
+  }
+
+  .login-btn {
+    background-color: #28a745;
+    color: white;
+    border-radius: 25px;
+    padding: 10px;
+    width: 100%;
+    border: none;
+  }
+
+  .login-btn:hover {
+    background-color: #218838;
+  }
+
+  .forgot-password {
+    text-decoration: none;
+    color: #6c757d;
+  }
+
+  .forgot-password:hover {
+    text-decoration: underline;
+  }
+
+
+  .loginnav{
+    background-color: black;
+  }
+
+
+
+  #post-login a.btn-primary {
+    padding: 10px 25px;
+    font-weight: 500;
+    margin: 10px;
+  }
+
+
+
+  
+  
