@@ -1,41 +1,34 @@
 {
-  "products": [
-    {
-    "id": 1,
-    "description": "Emper President Saviour Perfume For Men 100ml",
-    "price": "3200",
-    "imageUrl": "https://perfumehut.com.pk/wp-content/uploads/2023/11/Emper-President-Saviour-Perfume-For-Men-100ml-1-800x800.webp"
-  },
-  {
-    "id": 2,
-    "description": "Dirham Perfume EDP - 100ml",
-    "price": "3199",
-    "imageUrl": "https://www.catchnpack.pk/wp-content/uploads/2023/02/Dirham-Perfume-EDP-%E2%80%93-100ml.png"
-  },
-  {
-    "id": 3,
-    "description": "Hayyati Men 100ml",
-    "price": "4648.50",
-    "imageUrl": "https://fragrancegallery.pk/wp-content/uploads/2022/08/lattafa-perfumes-hayaati-men-eau-de-parfum-100ml.png"
-  },
-  {
-    "id": 4,
-    "description": "Dark as wood EDP by Fragrance World 100ml",
-    "price": "3500",
-    "imageUrl": "https://giftpoint.com.pk/cdn/shop/files/DarkAsWoodEDPByFragranceWorld100ml.png?v=1714253549"
-  },
-    {
-      "description"
-: 
-"Blue De chanel Perfume 100ML for men ",
-"id"
-: 
-1749206964115,
-"imageUrl"
-: 
-"https://i.ibb.co/PZM26pXK/Bleu-De-Chanel-Perfume-EDP-100ml-2.jpg",
-"price"
-: 
-58,000
-    }
+    "products": [
+        {
+            "id": 1,
+            "description": "Emper President Saviour Perfume For Men 100ml",
+            "price": "3200",
+            "imageUrl": "https://perfumehut.com.pk/wp-content/uploads/2023/11/Emper-President-Saviour-Perfume-For-Men-100ml-1-800x800.webp"
+        },
+        {
+            "id": 2,
+            "description": "Dirham Perfume EDP - 100ml",
+            "price": "3199",
+            "imageUrl": "https://www.catchnpack.pk/wp-content/uploads/2023/02/Dirham-Perfume-EDP-%E2%80%93-100ml.png"
+        },
+        {
+            "id": 3,
+            "description": "Hayyati Men 100ml",
+            "price": "4648.50",
+            "imageUrl": "https://fragrancegallery.pk/wp-content/uploads/2022/08/lattafa-perfumes-hayaati-men-eau-de-parfum-100ml.png"
+        },
+        {
+            "id": 4,
+            "description": "Dark as wood EDP by Fragrance World 100ml",
+            "price": "3500",
+            "imageUrl": "https://giftpoint.com.pk/cdn/shop/files/DarkAsWoodEDPByFragranceWorld100ml.png?v=1714253549"
+        },
+        {
+            "description": "Blue De chanel Perfume 100ML for men ",
+            "id": 1749206964115,
+            "imageUrl": "https://i.ibb.co/PZM26pXK/Bleu-De-Chanel-Perfume-EDP-100ml-2.jpg",
+            "price": "58000"
+        }
+    ]
 }
