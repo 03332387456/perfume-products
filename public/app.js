@@ -403,6 +403,111 @@
 
 
 // Store initial products once
+// if (!localStorage.getItem('initialProducts')) {
+//   localStorage.setItem('initialProducts', JSON.stringify([
+//     {
+//       id: 1,
+//       description: "Emper President Saviour Perfume For Men 100ml",
+//       price: "3200",
+//       imageUrl: "https://perfumehut.com.pk/wp-content/uploads/2023/11/Emper-President-Saviour-Perfume-For-Men-100ml-1-800x800.webp"
+//     },
+//     {
+//       id: 2,
+//       description: "Dirham Perfume EDP - 100ml",
+//       price: "3199",
+//       imageUrl: "https://www.catchnpack.pk/wp-content/uploads/2023/02/Dirham-Perfume-EDP-%E2%80%93-100ml.png"
+//     },
+//     {
+//       id: 3,
+//       description: "Hayyati Men 100ml",
+//       price: "4,648.50",
+//       imageUrl: "https://fragrancegallery.pk/wp-content/uploads/2022/08/lattafa-perfumes-hayaati-men-eau-de-parfum-100ml.png"
+//     },
+//     {
+//       id: 4,
+//       description: "Dark as wood EDP by fragrance world 100ml",
+//       price: "Rs3,500",
+//       imageUrl: "https://giftpoint.com.pk/cdn/shop/files/DarkAsWoodEDPByFragranceWorld100ml.png?v=1714253549"
+//     }
+//   ]));
+// }
+
+// // Ensure userProducts exists
+// if (!localStorage.getItem('userProducts')) {
+//   localStorage.setItem('userProducts', JSON.stringify([]));
+// }
+
+// // Admin check
+// const isAdmin = localStorage.getItem('isAdmin') === 'true';
+
+// function loadDynamicProducts() {
+//   const container = document.getElementById('productContainer');
+//   container.innerHTML = "";
+
+//   const initialProducts = JSON.parse(localStorage.getItem('initialProducts')) || [];
+//   const userProducts = JSON.parse(localStorage.getItem('userProducts')) || [];
+//   const allProducts = [...initialProducts, ...userProducts];
+
+//   allProducts.forEach(product => {
+//     const card = document.createElement('div');
+//     card.className = 'card';
+//     card.dataset.name = product.description;
+//     card.dataset.id = product.id;
+
+//     card.innerHTML = `
+//       <img src="${product.imageUrl}" alt="Perfume">
+//       <div class="card-title">${product.description}</div>
+//       <div class="card-price">
+//         <span class="new-price">Rs ${product.price}</span>
+//       </div>
+//       <a href="https://wa.me/923343901525?text=I'm%20interested%20in%20${encodeURIComponent(product.description)}"
+//          target="_blank"
+//          class="whatsapp-icon">
+//          <i class="fab fa-whatsapp"></i>
+//       </a>
+    
+//     `;
+
+//     container.appendChild(card);
+//   });
+// }
+
+// window.onload = function () {
+//   loadDynamicProducts();
+
+//   // Search
+//   const searchInput = document.querySelector('.search-box input');
+//   searchInput.addEventListener('keyup', function () {
+//     const query = this.value.toLowerCase();
+//     const perfumeCards = document.querySelectorAll('.card-container .card');
+
+//     perfumeCards.forEach(card => {
+//       const name = card.getAttribute('data-name').toLowerCase();
+//       card.style.display = name.includes(query) ? 'block' : 'none';
+//     });
+//   });
+
+//   // Remove product (admin only)
+//   document.addEventListener('click', function (e) {
+//     if (e.target.classList.contains('remove-btn') && isAdmin) {
+//       const id = e.target.dataset.id;
+//       let userProducts = JSON.parse(localStorage.getItem('userProducts')) || [];
+//       userProducts = userProducts.filter(product => product.id !== id);
+//       localStorage.setItem('userProducts', JSON.stringify(userProducts));
+//       loadDynamicProducts();
+//     }
+//   });
+// };
+
+
+
+
+
+
+
+
+
+
 if (!localStorage.getItem('initialProducts')) {
   localStorage.setItem('initialProducts', JSON.stringify([
     {
@@ -440,37 +545,44 @@ if (!localStorage.getItem('userProducts')) {
 // Admin check
 const isAdmin = localStorage.getItem('isAdmin') === 'true';
 
-function loadDynamicProducts() {
+async function loadDynamicProducts() {
   const container = document.getElementById('productContainer');
   container.innerHTML = "";
 
-  const initialProducts = JSON.parse(localStorage.getItem('initialProducts')) || [];
-  const userProducts = JSON.parse(localStorage.getItem('userProducts')) || [];
-  const allProducts = [...initialProducts, ...userProducts];
+  try {
+    const response = await fetch('https://my-json-server.typicode.com/03332387456/perfume-products/products');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const allProducts = await response.json();
 
-  allProducts.forEach(product => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.dataset.name = product.description;
-    card.dataset.id = product.id;
+    allProducts.forEach(product => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.dataset.name = product.description;
+      card.dataset.id = product.id;
 
-    card.innerHTML = `
-      <img src="${product.imageUrl}" alt="Perfume">
-      <div class="card-title">${product.description}</div>
-      <div class="card-price">
-        <span class="new-price">Rs ${product.price}</span>
-      </div>
-      <a href="https://wa.me/923343901525?text=I'm%20interested%20in%20${encodeURIComponent(product.description)}"
-         target="_blank"
-         class="whatsapp-icon">
-         <i class="fab fa-whatsapp"></i>
-      </a>
-    
-    `;
+      card.innerHTML = `
+        <img src="${product.imageUrl}" alt="Perfume">
+        <div class="card-title">${product.description}</div>
+        <div class="card-price"><span class="new-price">Rs ${product.price}</span></div>
+        <a href="https://wa.me/923343901525?text=I'm%20interested%20in%20${encodeURIComponent(product.description)}"
+           target="_blank" class="whatsapp-icon">
+           <i class="fab fa-whatsapp"></i>
+        </a>
+      `;
 
-    container.appendChild(card);
-  });
+      container.appendChild(card);
+    });
+
+  } catch (err) {
+    console.error("Failed to load products:", err);
+    container.innerHTML = "<p>Unable to load products right now.</p>";
+  }
 }
+
+
+
 
 window.onload = function () {
   loadDynamicProducts();
@@ -498,6 +610,7 @@ window.onload = function () {
     }
   });
 };
+
 
 
 

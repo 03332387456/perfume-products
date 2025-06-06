@@ -87,6 +87,84 @@
 
 
 
+// document.querySelector('form').addEventListener('submit', async function (e) {
+//   e.preventDefault();
+
+//   const fileInput = document.getElementById('imageFile');
+//   const description = document.getElementById('description').value;
+//   const price = document.getElementById('price').value;
+
+//   if (!fileInput.files[0] || !description || !price) {
+//     alert('Please fill all fields and select an image.');
+//     return;
+//   }
+
+//   const formData = new FormData();
+//   formData.append("image", fileInput.files[0]);
+
+//   try {
+//     // 🔑 Replace YOUR_API_KEY with your actual ImgBB key
+//     const res = await fetch("https://api.imgbb.com/1/upload?key=d394107dd34fd68fc3e4a8f662b74c1a", {
+//       method: "POST",
+//       body: formData
+//     });
+
+//     const data = await res.json();
+//     const imageUrl = data.data.url;
+
+//     // Save to localStorage
+//   // Save this manually or create a button to copy this to your local db.json
+// const newProduct = {
+//   id: Date.now(),
+//   imageUrl,
+//   description,
+//   price
+// };
+
+
+//     const userProducts = JSON.parse(localStorage.getItem('userProducts')) || [];
+//     userProducts.push(newProduct);
+//     localStorage.setItem('userProducts', JSON.stringify(userProducts));
+
+//     alert('Product added successfully!');
+//     window.location.href = "index.html";
+
+//   } catch (error) {
+//     console.error("Upload failed", error);
+//     alert("Image upload failed.");
+//   }
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 document.querySelector('form').addEventListener('submit', async function (e) {
   e.preventDefault();
 
@@ -103,7 +181,6 @@ document.querySelector('form').addEventListener('submit', async function (e) {
   formData.append("image", fileInput.files[0]);
 
   try {
-    // 🔑 Replace YOUR_API_KEY with your actual ImgBB key
     const res = await fetch("https://api.imgbb.com/1/upload?key=d394107dd34fd68fc3e4a8f662b74c1a", {
       method: "POST",
       body: formData
@@ -112,20 +189,16 @@ document.querySelector('form').addEventListener('submit', async function (e) {
     const data = await res.json();
     const imageUrl = data.data.url;
 
-    // Save to localStorage
-    const product = {
+    const newProduct = {
       id: Date.now(),
       imageUrl,
       description,
       price
     };
 
-    const userProducts = JSON.parse(localStorage.getItem('userProducts')) || [];
-    userProducts.push(product);
-    localStorage.setItem('userProducts', JSON.stringify(userProducts));
-
-    alert('Product added successfully!');
-    window.location.href = "index.html";
+    // ✅ Show JSON to admin to copy
+    console.log("Add this to db.json in GitHub:", newProduct);
+    alert("✅ Copy the product from console and paste into db.json on GitHub!");
 
   } catch (error) {
     console.error("Upload failed", error);
